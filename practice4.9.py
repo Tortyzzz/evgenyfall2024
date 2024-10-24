@@ -1,5 +1,0 @@
-a = int(input('Enter a  '))
-b = int(input('Enter b  '))
-c = int(input('Enter c   '))
-m = max(a, b, c)
-print("MAX of a, b, c - ", m)
