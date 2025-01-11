@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Участники</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: DS Crystal, DS Crystal;
+            background-color: #f0f8ff; /* Светло-голубой фон */
+            color: #333; /* Тёмно-серый текст */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #1e90ff; /* Яркий синий цвет для заголовка */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff; /* Белый фон для формы */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #1e90ff; /* Яркий синий фон */
+            color: #fff; /* Белый текст */
+            border: none;
+            padding: 3px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0077cc; /* Темно-синий фон при наведении */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        li {
+            background-color: #ggf; /* Белый фон для элементов списка */
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e90ff; /* Синий цвет для ссылок */
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0077cc; /* Темно-синий цвет при наведении */
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            background-color: #1e90ff; /* Яркий синий фон */
+            color: #fff; /* Белый текст */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background-color: #0077cc; /* Темно-синий фон при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h1>Участники</h1>
+    <form method="POST">
+        <label for="casual">Casual:</label>
+        <input type="text" id="casual" name="casual">
+        <button type="submit">Добавить участника</button>
+    </form>
+    <ul>
+        {% for member in members %}
+        <li>
+            {{ member.member_id }} / {{ member.member_casual }}
+            <a href="{{ url_for('edit_member_route', member_id=member.member_id) }}">Редактировать</a>
+            <form method="POST" action="{{ url_for('delete_member_route', member_id=member.member_id) }}" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="back-link">
+        <a href="{{ url_for('index') }}">На главную</a>
+    </div>
+</body>
+</html>

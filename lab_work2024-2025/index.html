@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: DS Crystal, DS Crystal;
+            background-color: #f0f8ff; /* Светло-голубой фон */
+            color: #333; /* Тёмно-серый текст */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #1e90ff; /* Яркий синий цвет для заголовка */
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        li {
+            margin: 25px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff; /* Белый текст */
+            background-color: #1e90ff; /* Яркий синий фон */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0077cc; /* Темно-синий фон при наведении */
+        }
+
+        /* Дополнительные стили для красоты */
+        .container {
+            background-color: #fff; /* Белый фон для контейнера */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Главная страница</h1>
+        <ul>
+            <li><a href="{{ url_for('members') }}">Участники</a></li>
+            <li><a href="{{ url_for('trips') }}">Поездки</a></li>
+            <li><a href="{{ url_for('stations') }}">Станции</a></li>
+        </ul>
+    </div>
+</body>
+</html>

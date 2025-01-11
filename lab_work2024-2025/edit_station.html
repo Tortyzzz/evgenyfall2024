@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать станцию</title>
+</head>
+<body>
+    <h1>Редактировать станцию</h1>
+    <form method="POST">
+        <label for="station_id">Station ID:</label>
+        <input type="text" id="station_id" name="station_id" value="{{ station.station_id }}">
+        <label for="station_name">Station Name:</label>
+        <input type="text" id="station_name" name="station_name" value="{{ station.station_name }}">
+        <label for="station_lat">Station Lat:</label>
+        <input type="text" id="station_lat" name="station_lat" value="{{ station.station_lat }}">
+        <label for="station_lng">Station Lng:</label>
+        <input type="text" id="station_lng" name="station_lng" value="{{ station.station_lng }}">
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{{ url_for('stations') }}">Назад</a>
+</body>
+</html>

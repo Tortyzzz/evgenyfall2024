@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать поездку</title>
+</head>
+<body>
+    <h1>Редактировать поездку</h1>
+    <form method="POST">
+        <label for="ride_id">Ride ID:</label>
+        <input type="text" id="ride_id" name="ride_id" value="{{ trip.ride_id }}">
+        <label for="rideable_type_id">Rideable Type ID:</label>
+        <input type="text" id="rideable_type_id" name="rideable_type_id" value="{{ trip.rideable_type_id }}">
+        <label for="start_date">Start Date:</label>
+        <input type="text" id="start_date" name="start_date" value="{{ trip.start_date }}">
+        <label for="end_date">End Date:</label>
+        <input type="text" id="end_date" name="end_date" value="{{ trip.end_date }}">
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{{ url_for('trips') }}">Назад</a>
+</body>
+</html>

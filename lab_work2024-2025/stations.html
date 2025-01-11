@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Станции</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Светло-голубой фон */
+            color: #333; /* Тёмно-серый текст */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #1e90ff; /* Яркий синий цвет для заголовка */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff; /* Белый фон для формы */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #1e90ff; /* Яркий синий фон */
+            color: #fff; /* Белый текст */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0077cc; /* Темно-синий фон при наведении */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 80%;
+            max-width: 1300px;
+        }
+
+        li {
+            background-color: #fff; /* Белый фон для элементов списка */
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e90ff; /* Синий цвет для ссылок */
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0077cc; /* Темно-синий цвет при наведении */
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            background-color: #1e90ff; /* Яркий синий фон */
+            color: #fff; /* Белый текст */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background-color: #0077cc; /* Темно-синий фон при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h1>Станции</h1>
+    <form method="POST">
+        <label for="station_id">Station ID:</label>
+        <input type="text" id="station_id" name="station_id">
+        <label for="station_name">Station Name:</label>
+        <input type="text" id="station_name" name="station_name">
+        <label for="station_lat">Station Lat:</label>
+        <input type="text" id="station_lat" name="station_lat">
+        <label for="station_lng">Station Lng:</label>
+        <input type="text" id="station_lng" name="station_lng">
+        <button type="submit">Добавить станцию</button>
+    </form>
+    <ul>
+        {% for station in stations %}
+        <li>
+            {{ station.station_key }} / {{ station.station_id }} / {{ station.station_name }} / {{ station.station_lat }} / {{ station.station_lng }}
+            <a href="{{ url_for('edit_station_route', station_key=station.station_key) }}">Редактировать</a>
+            <form method="POST" action="{{ url_for('delete_station_route', station_key=station.station_key) }}" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="back-link">
+        <a href="{{ url_for('index') }}">На главную</a>
+    </div>
+</body>
+</html>
